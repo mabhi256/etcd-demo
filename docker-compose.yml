@@ -1,0 +1,48 @@
+services:
+  etcd1:
+    image: ${REGISTRY}:${ETCD_VERSION}
+    container_name: etcd1
+    ports:
+      - 2379:2379
+      - 2380:2380
+    volumes:
+      - ${DATA_DIR}/etcd1:/etcd-data
+    command: >
+      /usr/local/bin/etcd
+      --data-dir=/etcd-data --name ${NAME_1}
+      --initial-advertise-peer-urls http://${HOST_1}:2380 --listen-peer-urls http://0.0.0.0:2380
+      --advertise-client-urls http://${HOST_1}:2379 --listen-client-urls http://0.0.0.0:2379
+      --initial-cluster ${CLUSTER}
+      --initial-cluster-state ${CLUSTER_STATE} --initial-cluster-token ${TOKEN}
+
+  etcd2:
+    image: ${REGISTRY}:${ETCD_VERSION}
+    container_name: etcd2
+    ports:
+      - 2479:2379
+      - 2480:2380
+    volumes:
+      - ${DATA_DIR}/etcd2:/etcd-data
+    command: >
+      /usr/local/bin/etcd
+      --data-dir=/etcd-data --name ${NAME_2}
+      --initial-advertise-peer-urls http://${HOST_2}:2380 --listen-peer-urls http://0.0.0.0:2380
+      --advertise-client-urls http://${HOST_2}:2379 --listen-client-urls http://0.0.0.0:2379
+      --initial-cluster ${CLUSTER}
+      --initial-cluster-state ${CLUSTER_STATE} --initial-cluster-token ${TOKEN}
+
+  etcd3:
+    image: ${REGISTRY}:${ETCD_VERSION}
+    container_name: etcd3
+    ports:
+      - 2579:2379
+      - 2580:2380
+    volumes:
+      - ${DATA_DIR}/etcd3:/etcd-data
+    command: >
+      /usr/local/bin/etcd
+      --data-dir=/etcd-data --name ${NAME_3}
+      --initial-advertise-peer-urls http://${HOST_3}:2380 --listen-peer-urls http://0.0.0.0:2380
+      --advertise-client-urls http://${HOST_3}:2379 --listen-client-urls http://0.0.0.0:2379
+      --initial-cluster ${CLUSTER}
+      --initial-cluster-state ${CLUSTER_STATE} --initial-cluster-token ${TOKEN}
