@@ -28,3 +28,9 @@ docker exec etcd1 etcdctl put mykey2 "hello"
 docker start etcd2
 docker exec etcd2 etcdctl get mykey2
 ```
+
+## Run snippets
+
+```bash
+go run ./cmd/01-kv-basic
+```
