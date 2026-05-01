@@ -13,6 +13,7 @@ import (
 
 func main() {
 	cli := etcdclient.NewClient()
+	defer cli.Close()
 
 	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
 	defer cancel()

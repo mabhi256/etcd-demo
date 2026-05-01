@@ -12,6 +12,7 @@ import (
 
 func main() {
 	cli := etcdclient.NewClient()
+	defer cli.Close()
 
 	//-------------------------------------------
 	// Watch Single Key
