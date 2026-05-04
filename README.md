@@ -33,4 +33,20 @@ docker exec etcd2 etcdctl get mykey2
 
 ```bash
 go run ./cmd/01-kv-basic
+
+go run ./cmd/02-kv-range
+
+go run ./cmd/03-kv-versioned
+
+go run ./cmd/04-watch
+
+go run ./cmd/05-watch-progress
+
+go run ./cmd/06-lease
+
+go run ./cmd/07-txn
+
+go run ./cmd/08-lock
+
+go run ./cmd/09-election
 ```
